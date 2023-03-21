@@ -16,7 +16,7 @@
  crossorigin=""></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body { margin: 0 }
+        body { margin:0 }
         #map { 
             height: 100vh; 
             width: 100vw;
@@ -92,8 +92,8 @@ var baseMaps = {
     "OSMap": basemap0
 }
 var verges = {
-    "RVBC Maintained": RVBCVerges,
-    "Non RVBC Maintained": NonRVBCVerges
+     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='green' /></svg> RVBC Maintained": RVBCVerges,
+     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='red' /></svg> Not RVBC Maintained": NonRVBCVerges
 }
 L.control.layers(baseMaps, verges).addTo(map)
 
@@ -130,8 +130,7 @@ L.Control.Button = L.Control.extend({
     },
     onRemove: function(map) {},
 });
-var control = new L.Control.Button()
-control.addTo(map);
+
 
     </script>
 </body>
