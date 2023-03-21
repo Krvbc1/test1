@@ -32,8 +32,10 @@
     <div id="map"></div>
     <script>
 var map = L.map('map').setView([53.9, -2.4], 12);
-var basemap1 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
-var basemap0 = L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=NAI9sZS6RxIdV4MpIdHfHR9lbQ9OPOwa').addTo(map);
+var basemap1 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxNativeZoom:19,
+        maxZoom:25}).addTo(map);
+var basemap0 = L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=NAI9sZS6RxIdV4MpIdHfHR9lbQ9OPOwa',{maxNativeZoom:19,
+        maxZoom:25}).addTo(map);
 
 var count = 0;
 var RVBCVerges = L.geoJSON(LCCVerges2, {
