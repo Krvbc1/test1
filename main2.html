@@ -32,8 +32,9 @@
     <div id="map"></div>
     <script>
 var map = L.map('map').setView([53.9, -2.4], 12);
-var basemap1 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}').addTo(map);
-var basemap0 = L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=NAI9sZS6RxIdV4MpIdHfHR9lbQ9OPOwa').addTo(map);
+var basemap1 = L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',).addTo(map);
+var basemap0 = L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=NAI9sZS6RxIdV4MpIdHfHR9lbQ9OPOwa',{maxNativeZoom:19,
+        maxZoom:25}).addTo(map);
 
 var count = 0;
 var RVBCVerges = L.geoJSON(LCCVerges2, {
@@ -46,6 +47,22 @@ var RVBCVerges = L.geoJSON(LCCVerges2, {
       opacity: 0.7,
       fill: true,
       fillColor: "green",
+      fillOpacity: 0.65,
+      smoothFactor: 0.5
+  },
+  onEachFeature: vergePopups
+}).addTo(map);
+
+var OtherVerges = L.geoJSON(LCCVerges2, {
+    filter: function(feature, layer) {
+        return feature.properties["Maintained by RVBC"] == "Other"
+    }, style: {
+      stroke: true,
+      color: "black",
+      weight: 0.5,
+      opacity: 0.7,
+      fill: true,
+      fillColor: "gray",
       fillOpacity: 0.65,
       smoothFactor: 0.5
   },
@@ -92,8 +109,9 @@ var baseMaps = {
     "OSMap": basemap0
 }
 var verges = {
-     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='green' /></svg> RVBC Maintained": RVBCVerges,
-     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='red' /></svg> Not RVBC Maintained": NonRVBCVerges
+     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='green' /></svg> Parish Council maintained by RVBC": RVBCVerges,
+     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='red' /></svg> Not RVBC Maintained": NonRVBCVerges,
+     "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='gray' /></svg> Not yet defined": OtherVerges
 }
 L.control.layers(baseMaps, verges).addTo(map)
 
