@@ -1,4 +1,4 @@
-const LLCVerges2 = {
+const LCCVerges2 = {
 "type": "FeatureCollection",
 "name": "Verges2",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
