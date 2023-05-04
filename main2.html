@@ -87,7 +87,7 @@ var NonRVBCVerges = L.geoJSON(LCCVerges2, {
 }).addTo(map);
 
 function vergePopups(feature, layer) {
-      layer.bindPopup("M2:  " + feature.properties.Area.toFixed(1) + "<br>" + "Notes:  " + feature.properties.Notes)
+      layer.bindPopup("M2:  " + feature.properties.Area + "<br>" + "Notes:  " + feature.properties.Notes)
 }
 
 var boroughBoundary = L.geoJSON(boroughExtent2, {
