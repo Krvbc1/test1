@@ -67,7 +67,7 @@ var OtherVerges = L.geoJSON(LCCVerges2, {
       smoothFactor: 0.5
   },
   onEachFeature: vergePopups
-}).addTo(map);
+})
 
 var NonRVBCVerges = L.geoJSON(LCCVerges2, {
     filter: function(feature, layer) {
@@ -113,7 +113,7 @@ var verges = {
      "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='red' /></svg> Not RVBC Maintained": NonRVBCVerges,
      "<svg height='12' width='12'><rect width='12' height='12' stroke='black' stroke-width='1' fill='gray' /></svg> Not yet defined": OtherVerges
 }
-
+L.control.layers(baseMaps).addTo(map)
 
 var markers = L.layerGroup([]).addTo(map)
 function getLocation() {
